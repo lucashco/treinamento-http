@@ -8,35 +8,43 @@ const api = require('./api')
 
 
 async function addUser() {
-  // const newUser = {
-  //   id: new Date().getTime().toString(),
-  //   name: 'Jhon Doe',
-  //   age: 99
-  // }
+  const newUser = {
+    id: new Date().getTime().toString(),
+    name: 'Lucas Castilho',
+    age: 28
+  }
 
-  // const result = await api.post('/users', newUser)
+  const result = await api.post('/users', newUser)
 
-  // console.log({result})
+  console.log({result})
 }
 
-function getUser(userId) {
+async function getUser(userId) {
+  const user = await api.get('/users?id=1663003749290')
 
+  console.log(user.data)
 }
 
-function getUsers() {
+async function getUsers() {
+  const user = await api.get('/users')
 
+  console.log(user.data)
 }
 
-function updateUser(userId) {
+async function updateUser() {
+  const user = await api.put('/users/1663003749290', { age: 29, name: 'Lucas Castilho' })
 
+  console.log(user.data)
 }
 
-function deleteUser(userId) {
+async function deleteUser(userId) {
+  const user = await api.delete('/users/1663003749290')
 
+  console.log(user)
 }
 
-addUser()
-// getUser(userId)
+// addUser()
+// getUser('1663003749290')
 // getUsers()
-// updateUser(userId)
-// deleteUser(userId)
+// updateUser().catch(error => console.log(error))
+deleteUser()
